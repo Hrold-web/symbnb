@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Ad;
 use App\Repository\AdRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,13 +29,21 @@ class AdController extends AbstractController
      *
      * @Route("/ads/{slug}", name="ads_show")
      *
-     * @param $slug
-     * @param AdRepository $repo
+     * @param Ad $ad
      * @return Response
      */
-    public function show($slug, AdRepository $repo){
+    #public function show($slug, AdRepository $repo){
+     #   // Recupère l'annonce qui correspond au slug
+      #  $ad = $repo->findOneBySlug($slug);
+
+       # return $this->render('ad/show.html.twig', [
+        #    'ad' => $ad
+        #]);
+    #}
+
+    public function show(Ad $ad){
         // Recupère l'annonce qui correspond au slug
-        $ad = $repo->findOneBySlug($slug);
+       // $ad = $repo->findOneBySlug($slug);
 
         return $this->render('ad/show.html.twig', [
             'ad' => $ad
