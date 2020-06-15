@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Ad;
+use App\Entity\Image;
 use App\Form\AdType;
 use App\Repository\AdRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -38,9 +39,15 @@ class AdController extends AbstractController
      */
     public function create(Request $request, EntityManagerInterface $manager){
         $ad = new Ad();
+
         $form = $this->createForm(AdType::class, $ad);
         $form->handleRequest($request);
         if($form->isSubmitted() && $form->isValid()){
+
+            foreach ($ad->getImages() as $image){
+                $image->setAd($ad);
+                $manager->persist($image);
+            }
             $manager->persist($ad);
             $manager->flush();
 
