@@ -14,8 +14,8 @@ use Symfony\Component\Validator\Constraints as Assert;
  * @ORM\Entity(repositoryClass=AdRepository::class)
  * @ORM\HasLifecycleCallbacks()
  * @UniqueEntity(
- *  fields={'title'},
- *  mesage='Une autre annonce possède déjà ce titre, merci de le modifier'
+ *     fields={"title"},
+ *     message="Une autre annonce possède déjà ce titre, merci de le modifier"
  * )
  */
 class Ad
@@ -45,7 +45,7 @@ class Ad
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=20, minMessage="L'introduction doit avoir au minimum 20 caractères")
+     * @Assert\Length(min=20, minMessage="L'\introduction doit avoir au minimum 20 caractères")
      */
     private $introduction;
 
