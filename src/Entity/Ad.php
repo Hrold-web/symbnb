@@ -45,7 +45,7 @@ class Ad
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=20, minMessage="L'\introduction doit avoir au minimum 20 caractères")
+     * @Assert\Length(min=20, minMessage="L'introduction doit avoir au minimum 20 caractères")
      */
     private $introduction;
 
@@ -66,7 +66,8 @@ class Ad
     private $rooms;
 
     /**
-     * @ORM\OneToMany(targetEntity=Image::class, mappedBy="ad", orphanRemoval=true)
+     * @ORM\OneToMany(targetEntity="App\Entity\Image", mappedBy="ad", orphanRemoval=true)
+     * @Assert\Valid()
      */
     private $images;
 
